@@ -52,3 +52,18 @@ dependencies {
     //EventLiveData
     api 'com.github.WeDoX:EventLiveData:1.0.0'
 }
+
+//发布到jitpack的配置
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.onedream'
+            artifactId = 'onenet'
+            version = '1.0.0'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}
