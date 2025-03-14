@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="one_net_http_status_code_exception_">HTTP响应异常，状态码为%s</string>
+    <string name="one_net_http_network_timeout">网络超时，请重试！</string>
+    <string name="one_net_http_network_error">网络错误，请重试！</string>
+    <string name="one_net_http_json_parse_error">Json数据解析出错！</string>
+</resources>
