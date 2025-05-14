@@ -11,7 +11,7 @@ interface OneNetConfig {
 
     fun baseUrl(): String
 
-    fun httpBaseHeader(): Map<String, String>?
+    fun headerProvider(): HeaderInterceptor.HeaderProvider
 
     fun launchExceptionHandler() : OneNetLaunchExceptionHandler
 

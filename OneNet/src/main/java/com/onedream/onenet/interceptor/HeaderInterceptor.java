@@ -10,23 +10,25 @@ import okhttp3.Response;
 
 
 public class HeaderInterceptor implements Interceptor {
-    private final Map<String, String> headers;
+    private final HeaderInterceptor.HeaderProvider headerProvider;
 
-    public HeaderInterceptor(Map<String, String> headers) {
-        this.headers = headers;
+    public HeaderInterceptor(HeaderInterceptor.HeaderProvider headerProvider) {
+        this.headerProvider = headerProvider;
     }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-        Request.Builder builder = chain.request()
-                .newBuilder();
-        if (headers != null && headers.size() > 0) {
-            Set<String> keys = headers.keySet();
-            for (String headerKey : keys) {
-                builder.addHeader(headerKey, headers.get(headerKey)).build();
+        Request.Builder builder = chain.request().newBuilder();
+        Map<String, String> headers = headerProvider.getHeaders();
+        if (headers != null && !headers.isEmpty()) {
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                builder.addHeader(entry.getKey(), entry.getValue());
             }
         }
-        //请求信息
         return chain.proceed(builder.build());
+    }
+
+    public static interface HeaderProvider {
+        Map<String, String> getHeaders();
     }
 }

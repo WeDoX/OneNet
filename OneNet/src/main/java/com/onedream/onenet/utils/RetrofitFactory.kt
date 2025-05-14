@@ -33,7 +33,7 @@ object RetrofitFactory {
         val sslParams: HttpsUtils.SSLParams = HttpsUtils.getSslSocketFactory()
         //
         return OkHttpClient.Builder()
-            .addInterceptor(HeaderInterceptor(OneNet.requireConfig().httpBaseHeader())).apply {
+            .addInterceptor(HeaderInterceptor(OneNet.requireConfig().headerProvider())).apply {
                 val loggingInterceptor = OneNet.requireConfig().loggingInterceptor()
                 loggingInterceptor?.let {
                     addInterceptor(it)
