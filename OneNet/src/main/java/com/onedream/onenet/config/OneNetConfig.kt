@@ -1,6 +1,7 @@
 package com.onedream.onenet.config
 
 import com.onedream.onenet.handler.OneNetLaunchExceptionHandler
+import com.onedream.onenet.interceptor.HeaderInterceptor.HeaderProvider
 import com.onedream.onenet.interceptor.log.LoggingInterceptor
 
 /**
