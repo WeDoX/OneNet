@@ -42,7 +42,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     // viewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:2.6.2"
     implementation "com.squareup.retrofit2:converter-gson:2.6.2"
@@ -59,7 +58,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.onedream'
             artifactId = 'onenet'
-            version = '1.3.0'
+            version = '1.3.1'
 
             afterEvaluate {
                 from components.release
