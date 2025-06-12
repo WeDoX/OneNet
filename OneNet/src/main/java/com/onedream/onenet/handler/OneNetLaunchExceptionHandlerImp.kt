@@ -57,7 +57,7 @@ class OneNetLaunchExceptionHandlerImp(private val context: Context) : OneNetLaun
                 return Exception(
                     String.format(
                         context.getString(R.string.one_net_http_status_code_exception_),
-                        httpException.code()
+                        httpException.code().toString()
                     )
                 )
             }

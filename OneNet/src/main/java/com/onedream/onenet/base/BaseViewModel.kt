@@ -36,13 +36,9 @@ open class BaseViewModel : ViewModel() {
                     }
 
                     else -> {
-//                        val handlerException = onError(e)
-//                        if (handlerException is ErrorSignatureException) {
-//                            AppSDK.needLogin(handlerException.message)
-//                        } else {
-//
-//                        }
-                        error?.invoke(OneNet.requireConfig().launchExceptionHandler().onError(e))
+                        val handlerException =
+                            OneNet.requireConfig().launchExceptionHandler().onError(e) ?: return@launch
+                        error?.invoke(handlerException)
                     }
                 }
             }
