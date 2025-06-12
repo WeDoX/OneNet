@@ -30,10 +30,10 @@ open class OneNetLaunchExceptionHandlerImp(private val context: Context) : OneNe
                     try {
                         val baseResp =
                             Gson().fromJson(bodyJsonStr, HttpStatusCodeExceptionResp::class.java)
-                        if (baseResp.msg.isNullOrEmpty()) {
+                        if (!baseResp.msg.isNullOrEmpty()) {
                             return ErrorSignatureException(baseResp.msg)
                         }
-                        if (baseResp.detail.isNullOrEmpty()) {
+                        if (!baseResp.detail.isNullOrEmpty()) {
                             return ErrorSignatureException(baseResp.detail)
                         }
                     } catch (e: Exception) {
@@ -44,10 +44,10 @@ open class OneNetLaunchExceptionHandlerImp(private val context: Context) : OneNe
                 try {
                     val baseResp =
                         Gson().fromJson(bodyJsonStr, HttpStatusCodeExceptionResp::class.java)
-                    if (baseResp.msg.isNullOrEmpty()) {
+                    if (!baseResp.msg.isNullOrEmpty()) {
                         return Exception(baseResp.msg)
                     }
-                    if (baseResp.detail.isNullOrEmpty()) {
+                    if (!baseResp.detail.isNullOrEmpty()) {
                         return Exception(baseResp.detail)
                     }
                 } catch (e: Exception) {
