@@ -18,7 +18,7 @@ import java.net.UnknownHostException
  *@author chenguijian
  *@since 2025/3/14
  */
-class OneNetLaunchExceptionHandlerImp(private val context: Context) : OneNetLaunchExceptionHandler {
+open class OneNetLaunchExceptionHandlerImp(private val context: Context) : OneNetLaunchExceptionHandler {
     override fun onError(e: Exception): Exception {
         when (e) {
             is HttpException -> {
