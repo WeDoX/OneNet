@@ -70,7 +70,8 @@ class MainViewModel : BaseViewModel() {
     }
 
 }
-
+~~~~~~~
+~~~~~~~
 mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 mViewModel.launchErrorResp.observe(this){
 }
