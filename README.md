@@ -16,3 +16,39 @@ Step 2. Add the dependency
 	        implementation 'com.github.WeDoX:OneNet:1.3.6'
 	}
 ~~~~~~~
+
+Step 3. Customize your OneNetCommonConfig(eg:[HttpConfig](https://github.com/WeDoX/OneNet/blob/master/app/src/main/java/com/onedream/onenet/http_demo/config/HttpConfig.kt)) And init in Application
+
+~~~~~~~
+class App : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        //
+        OneNet.init(HttpConfig(this.applicationContext))
+    }
+}
+~~~~~~~
+
+Step 4. Code your ApiService and HttpDataRepository
+~~~~~~~
+interface ApiService {
+    @GET("/other/one_net_test.php")
+    suspend fun testGet(@Query("submit_content") submit_content:String): BaseResp<OneNetTestGetResp>
+}
+
+object HttpDataRepository {
+
+    private val apiService: ApiService by lazy {
+        RetrofitFactory.create(
+            ApiService::class.java
+        )
+    }
+
+    suspend fun testGet(submit_content: String): BaseResp<OneNetTestGetResp> {
+        return apiService.testGet(submit_content)
+    }
+}
+~~~~~~~
+
+
