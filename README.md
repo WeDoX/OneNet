@@ -13,6 +13,6 @@ Step 1. Add it in your root settings.gradle at the end of repositories:
 Step 2. Add the dependency
 ~~~~~~~
 	dependencies {
-	        implementation 'com.github.WeDoX:OneNet:1.0.0'
+	        implementation 'com.github.WeDoX:OneNet:1.3.6'
 	}
 ~~~~~~~
