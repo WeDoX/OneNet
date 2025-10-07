@@ -52,3 +52,30 @@ object HttpDataRepository {
 ~~~~~~~
 
 
+Step 5. Customize your BaseViewModel And Use
+~~~~~~~
+class MainViewModel : BaseViewModel() {
+    private val _testGetSuccess = MutableEventLiveData<Pair<OneNetTestGetResp, String>>()
+    val testGetSuccess: EventLiveData<Pair<OneNetTestGetResp, String>>
+        get() = _testGetSuccess
+
+    fun requestTestGet(submit_content: String) {
+        launchAsyncDataAndMsg(block = {
+            HttpDataRepository.testGet(submit_content)
+        }, success = {
+            _testGetSuccess.postValue(it)
+        }, error = {
+            sendLaunchErrorResp(it.message ?: "")
+        })
+    }
+
+}
+
+mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+mViewModel.launchErrorResp.observe(this){
+}
+mViewModel.testGetSuccess.observe(this) {
+}
+~~~~~~~
+
+
